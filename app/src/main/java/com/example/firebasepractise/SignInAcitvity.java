@@ -42,7 +42,7 @@ public class SignInAcitvity extends AppCompatActivity {
         signin_btn = findViewById(R.id.signIn_btn);
         signUp_btn = findViewById(R.id.signUp_btn);
 
-        verification_email_textview=findViewById(R.id.verification_email_textview);
+        verification_email_textview = findViewById(R.id.verification_email_textview);
 
         firebaseAuth = FirebaseAuth.getInstance();
 
@@ -92,8 +92,8 @@ public class SignInAcitvity extends AppCompatActivity {
         verification_email_textview.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                ResendVerificationEmail resendVerificationEmail=new ResendVerificationEmail();
-                resendVerificationEmail.show(getSupportFragmentManager(),"Resend Verification Email Dialog");
+                ResendVerificationEmail resendVerificationEmail = new ResendVerificationEmail();
+                resendVerificationEmail.show(getSupportFragmentManager(), "Resend Verification Email Dialog");
             }
         });
     }
@@ -104,17 +104,17 @@ public class SignInAcitvity extends AppCompatActivity {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
                 FirebaseUser firebaseUser = firebaseAuth.getCurrentUser();
-                if (firebaseUser != null ) {
+                if (firebaseUser != null) {
                     Log.d(TAG, firebaseUser.getUid());
-                    if(!firebaseUser.isEmailVerified()){
+                    if (!firebaseUser.isEmailVerified()) {
                         Toast.makeText(SignInAcitvity.this, "Check your email", Toast.LENGTH_SHORT).show();
                     }
-                } 
+                }
             }
         };
 
     }
-    
+
 
     @Override
     protected void onStart() {
